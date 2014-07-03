@@ -6,5 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="sync_button">Sync now!</string>
     <string name="analog_clock">Analog clock</string>
+    <string name="status">Last synced time:</string>
+    <string name="timer_status">Remaining time until next sync:</string>
+    <string name="digital_clock">Digital clock:</string>
 
 </resources>

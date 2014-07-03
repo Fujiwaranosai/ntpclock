@@ -132,7 +132,6 @@ public class MainActivity extends ActionBarActivity {
 			
 			TextView clockTextView = (TextView) rootView.findViewById(R.id.digital_clock);
 			mDigitalClock = new DigitalClock(clockTextView);
-			mDigitalClock.startUpdater();
 			
 			TextView timerTextView = (TextView) rootView.findViewById(R.id.timer_clock);
 			mTimerClock = new TimerClock(timerTextView);
@@ -146,10 +145,18 @@ public class MainActivity extends ActionBarActivity {
 			});
 			
 			mAnalogClock = (AnalogClock) rootView.findViewById(R.id.analog_clock);
+			
+			mDigitalClock.startUpdater();
 			mAnalogClock.startUpdater();
 			
-			// Start the NTP sync handler
-			mHandler.post(mNTPSync);
+			// Delay the NTP updating to give time for background drawing and prevent wrongly calculation
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					// Start the NTP sync handler
+					mHandler.post(mNTPSync);
+				}
+			}, 1000);
 			
 			statusTextView = (TextView) rootView.findViewById(R.id.status);
 			
