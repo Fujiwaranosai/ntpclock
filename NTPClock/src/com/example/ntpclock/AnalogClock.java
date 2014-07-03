@@ -26,7 +26,6 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews.RemoteView;
 
@@ -143,7 +142,7 @@ public class AnalogClock extends View {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         if (mAttached) {
-            getContext().unregisterReceiver(mIntentReceiver);
+            //getContext().unregisterReceiver(mIntentReceiver);
             mAttached = false;
         }
     }
